@@ -18,16 +18,19 @@ export function Portfolio() {
 
   return (
     <>
-      <Leva collapsed />
+      <div className="relative">
+        <Leva collapsed />
+        <div className="absolute top-20 right-5 z-10 font-bold text-xl w-60 text-center text-slate-800">
+          <span className="absolute -top-3 border-l-4 border-t-4 border-red-400 w-3 h-3 rotate-45 left-1/2 translate-x--1/2" />
+          You can play with the{" "}
+          <span className="color text-red-400">Colors</span> here
+        </div>
+      </div>
       <Canvas
         style={{
           height: "100%",
-          position: "absolute",
           width: "100%",
-          right: 0,
-          top: 0,
           pointerEvents: "auto",
-          zIndex: 1,
         }}
         frameloop="always"
         dpr={window?.devicePixelRatio}
