@@ -67,7 +67,7 @@ const LandingPage = () => {
 
       <Link
         to={URL_PATH.desk}
-        className="inline-block px-6 py-3 mt-6 bg-red-400 text-white rounded-full hover:bg-red-600 transition duration-300"
+        className="inline-block px-6 py-3 my-6 bg-red-400 text-white rounded-full hover:bg-red-600 transition duration-300"
       >
         Explore the Portfolio
       </Link>

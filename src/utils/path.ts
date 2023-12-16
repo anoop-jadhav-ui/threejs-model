@@ -3,4 +3,5 @@ export const URL_PATH = {
   desk: "/desk",
   ring: "/ring",
   wallClock: "/wallClock",
+  logo: "/logo",
 };

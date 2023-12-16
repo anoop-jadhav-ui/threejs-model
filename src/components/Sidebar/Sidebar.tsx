@@ -14,7 +14,7 @@ const sidebarItems: SidebarItem[] = [
     element: (
       <>
         <span>🖥️</span>
-        <span className="pl-4">Computer Desk</span>
+        <span className="pl-4">Fancy Workstation</span>
       </>
     ),
   },
@@ -24,6 +24,15 @@ const sidebarItems: SidebarItem[] = [
       <>
         <span>⏰ </span>
         <span className="pl-4">Wall Clock</span>
+      </>
+    ),
+  },
+  {
+    path: URL_PATH.logo,
+    element: (
+      <>
+        <span>🚀</span>
+        <span className="pl-4">Tech Skill Logos</span>
       </>
     ),
   },
@@ -111,6 +120,7 @@ const Sidebar = () => {
           {sidebarItems.map((item) => {
             return (
               <Link
+                key={item.path}
                 to={item.path}
                 className={`text-white text-xl md:text-base bg-gray-700 p-4 pl-6 rounded-md cursor-pointer hover:bg-red-400 ${
                   pathname === item.path && "bg-red-400"

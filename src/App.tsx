@@ -5,6 +5,7 @@ import LoadingPage from "./components/LoadingPage/LoadingPage";
 import Sidebar from "./components/Sidebar/Sidebar";
 import { useSidebar } from "./hooks/useSidebar";
 import { URL_PATH } from "./utils/path";
+import Logo from "./components/Models/Logo/Logo";
 
 const Desk = React.lazy(() => import("./components/Models/Desk/Desk"));
 const Clock = React.lazy(() => import("./components/Models/Clock/Clock"));
@@ -35,6 +36,7 @@ function App() {
             <Route element={<Desk />} path={URL_PATH.desk} />
             <Route element={<Clock />} path={URL_PATH.wallClock} />
             <Route element={<Ring />} path={URL_PATH.ring} />
+            <Route element={<Logo />} path={URL_PATH.logo} />
           </Routes>
         </Suspense>
       </div>
