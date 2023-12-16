@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useSidebar } from "../../hooks/useSidebar";
 import { URL_PATH } from "../../utils/path";
 import { isMobile } from "react-device-detect";
+import { useEffect } from "react";
 interface SidebarItem {
   path: string;
   element: React.ReactElement;
@@ -40,6 +41,12 @@ const sidebarItems: SidebarItem[] = [
 const Sidebar = () => {
   const { isSidebarOpen, toggleSidebar } = useSidebar();
   const { pathname } = useLocation();
+
+  useEffect(() => {
+    if (isMobile && pathname !== URL_PATH.root) {
+      toggleSidebar(false);
+    }
+  }, [pathname, toggleSidebar]);
 
   const linkClickHandler = () => {
     if (isMobile && isSidebarOpen) {

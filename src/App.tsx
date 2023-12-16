@@ -18,15 +18,15 @@ function App() {
   return (
     <div className="flex flex-wrap h-screen">
       <div
-        className={`w-full ${
-          isSidebarOpen ? "h-full z-20 md:w-2/12" : "h-full w-0 md:w-0"
+        className={`${
+          isSidebarOpen ? "w-full h-full z-20 md:w-2/12" : "w-0 h-full md:w-0"
         }`}
       >
         <Sidebar />
       </div>
       <div
-        className={`w-full ${
-          isSidebarOpen ? "h-full md:w-10/12" : "w-full md:w-full"
+        className={`h-full ${
+          isSidebarOpen ? "md:w-10/12" : "w-full md:w-full"
         }`}
       >
         <Suspense fallback={<LoadingPage />}>
