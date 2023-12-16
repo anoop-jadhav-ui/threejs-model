@@ -5,11 +5,10 @@ Command: npx gltfjsx@6.1.4 --types ./public/loadingCube.glb --transform -s
 
 import { GradientTexture, Html, useGLTF, useProgress } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { useControls } from "leva";
 import { useRef, useTransition } from "react";
 import * as THREE from "three";
 import { GLTF } from "three-stdlib";
-import { color } from "../Portfolio/Model/materials";
+import { color } from "../Desk/Model/materials";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -20,11 +19,6 @@ export function LoadingCube(props: JSX.IntrinsicElements["group"]) {
   const [, startTransition] = useTransition();
   const { progress } = useProgress();
   const { nodes } = useGLTF("/loadingCube-transformed.glb") as GLTFResult;
-
-  const { textColor } = useControls("loader", {
-    cubeColor: color.CUBE_COLOR,
-    textColor: "#222",
-  });
 
   const cubeRef = useRef<THREE.Mesh>(null);
 
@@ -65,13 +59,13 @@ export function LoadingCube(props: JSX.IntrinsicElements["group"]) {
         center
       >
         <p
+          className="text-slate-800"
           style={{
             fontSize: 24,
-            color: textColor,
             fontWeight: "bold",
             position: "absolute",
             left: "-1.25rem",
-            top: "3.5rem",
+            top: "4.5rem",
           }}
         >
           {progress.toFixed()}%

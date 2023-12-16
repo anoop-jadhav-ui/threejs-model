@@ -1,8 +1,9 @@
 import { Globals } from "@react-spring/three";
 import { OrbitControls, PresentationControls, Stage } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { Leva, useControls } from "leva";
+import { useControls } from "leva";
 import React, { Suspense } from "react";
+import LevaControls from "../../LevaControls/LevaControls";
 import { LoadingCube } from "../Loader3D/LoadingCube";
 
 const Model = React.lazy(() => import("./Model/Model"));
@@ -11,30 +12,22 @@ Globals.assign({
   frameLoop: "always",
 });
 
-export function Portfolio() {
+function BgCanvas() {
   const canvasColor = useControls("Canvas Color", {
     color: "#fce3f3",
   });
 
   return (
     <>
-      <div className="relative">
-        <Leva collapsed />
-        <div className="absolute top-20 right-5 z-10 font-bold text-xl w-60 text-center text-slate-800">
-          <span className="absolute -top-3 border-l-4 border-t-4 border-red-400 w-3 h-3 rotate-45 left-1/2 translate-x--1/2" />
-          You can play with the{" "}
-          <span className="color text-red-400">Colors</span> here
-        </div>
-      </div>
+      <LevaControls />
       <Canvas
         style={{
-          height: "100%",
-          width: "100%",
           pointerEvents: "auto",
+          zIndex: 1,
         }}
         frameloop="always"
         dpr={window?.devicePixelRatio}
-        camera={{ fov: 25, position: [0, 0, 25] }}
+        camera={{ fov: 25, position: [0, 0, 24] }}
         flat
       >
         <color attach="background" args={[canvasColor.color]} />
@@ -42,7 +35,7 @@ export function Portfolio() {
           <PresentationControls
             snap
             global
-            zoom={0.8}
+            zoom={1}
             rotation={[0, -Math.PI / 6, 0]}
             polar={[0, Math.PI / 6]}
             azimuth={[-Math.PI / 6, Math.PI / 6]}
@@ -57,3 +50,5 @@ export function Portfolio() {
     </>
   );
 }
+
+export default BgCanvas;
