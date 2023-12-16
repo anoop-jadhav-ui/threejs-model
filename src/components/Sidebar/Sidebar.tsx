@@ -91,7 +91,7 @@ const Sidebar = () => {
           </svg>
         )}
       </button>
-      <div className={`${!isSidebarOpen && "invisible"}`}>
+      <div className={`${!isSidebarOpen ? "invisible" : ""}`}>
         <Link to={URL_PATH.root}>
           <div className={`text-2xl font-bold text-white text-center pt-4 `}>
             <span className="text-red-400">3D</span> Models

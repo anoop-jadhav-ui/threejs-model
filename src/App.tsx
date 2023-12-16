@@ -26,7 +26,7 @@ function App() {
       </div>
       <div
         className={`w-full ${
-          isSidebarOpen ? "h-full md:w-10/12" : "md:w-full"
+          isSidebarOpen ? "h-full md:w-10/12" : "w-full md:w-full"
         }`}
       >
         <Suspense fallback={<LoadingPage />}>
