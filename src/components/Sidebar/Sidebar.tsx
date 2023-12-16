@@ -57,10 +57,10 @@ const Sidebar = () => {
   return (
     <div className="bg-gray-800 h-full z-10 relative box-border">
       <button
-        className={`absolute top-2 right-2 hover:bg-red-400 rounded-sm p-1 ${
+        className={`absolute top-2 right-2 hover:bg-red-400 rounded-md p-1 ${
           isSidebarOpen
             ? "translate-x-0"
-            : "translate-x-12  bg-gray-800 p-2 rounded-sm rounded-l-none"
+            : "translate-x-12  bg-gray-800 p-2 rounded-md rounded-l-none"
         }`}
         onClick={() => {
           toggleSidebar((prevValue) => !prevValue);
@@ -112,7 +112,7 @@ const Sidebar = () => {
             return (
               <Link
                 to={item.path}
-                className={`text-white bg-gray-700 p-2 pl-4 rounded-md cursor-pointer hover:bg-red-400 ${
+                className={`text-white text-xl md:text-base bg-gray-700 p-4 pl-6 rounded-md cursor-pointer hover:bg-red-400 ${
                   pathname === item.path && "bg-red-400"
                 }`}
                 onClick={linkClickHandler}
