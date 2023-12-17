@@ -1,11 +1,10 @@
-import { animated, useSpring } from "@react-spring/three";
-import { useGLTF, useProgress } from "@react-three/drei";
-import { GroupProps, useFrame } from "@react-three/fiber";
+import { animated } from "@react-spring/three";
+import { useGLTF } from "@react-three/drei";
 import { useControls } from "leva";
-import { useEffect, useRef, useTransition } from "react";
-import { Group, Material } from "three";
+import { Material } from "three";
 import { GLTF } from "three-stdlib";
 
+import useBounceInAnimation from "../../../../hooks/useBounceInAnimation";
 import Background from "./atoms/Background";
 import Bulb from "./atoms/Bulb";
 import ColorCards from "./atoms/ColorCards";
@@ -95,50 +94,22 @@ type GLTFResult = GLTF & {
   };
 };
 
-const Model = (props: GroupProps) => {
+const Model = () => {
   const { nodes, materials } = useGLTF(
     "/portfolio-transformed.glb"
   ) as GLTFResult;
+
+  const { groupRef, springs } = useBounceInAnimation({
+    scaleTo: 1,
+  });
 
   const { modelPosition, modelRotation } = useControls("modelSettings", {
     modelPosition: [0, -1.5, 0],
     modelRotation: [0, 0, 0],
   });
 
-  const [, startTransition] = useTransition();
-  const { progress } = useProgress();
-  const groupRef = useRef<Group>(null);
-
-  const [springs, api] = useSpring(() => ({
-    scale: 0,
-    rotation: 0,
-    config: {
-      mass: 4,
-      friction: 30,
-    },
-  }));
-
-  useEffect(() => {
-    startTransition(() => {
-      if (progress === 100) {
-        api.start({
-          scale: 1,
-        });
-      }
-    });
-  }, [api, progress]);
-
-  // useFrame(({ clock }) => {
-  //   startTransition(() => {
-  //     if (groupRef.current)
-  //       groupRef.current.rotation.y =
-  //         Math.sin(clock.getElapsedTime() / 2) + Math.PI / 6;
-  //   });
-  // });
-
   return (
     <animated.group
-      {...props}
       dispose={null}
       position={modelPosition}
       rotation={modelRotation}

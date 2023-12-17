@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { URL_PATH } from "../../utils/path";
+import { URL_PATH } from "../../../utils/path";
 
 const LandingPage = () => {
   return (

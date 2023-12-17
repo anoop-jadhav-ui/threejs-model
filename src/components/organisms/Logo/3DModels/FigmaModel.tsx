@@ -7,6 +7,8 @@ import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 import { GLTF } from "three-stdlib";
 import CanvasHOC from "../CanvasHOC";
+import { animated } from "@react-spring/three";
+import useBounceInAnimation from "../../../../hooks/useBounceInAnimation";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -44,10 +46,13 @@ const greenMaterial = new THREE.MeshPhysicalMaterial({
   clearcoat: 1,
 });
 
-function FigmaModel(props: JSX.IntrinsicElements["group"]) {
+function FigmaModel() {
   const { nodes } = useGLTF("/figma-transformed.glb") as unknown as GLTFResult;
+  const { groupRef, springs } = useBounceInAnimation({
+    scaleTo: 0.5,
+  });
   return (
-    <group {...props} dispose={null}>
+    <animated.group dispose={null} ref={groupRef} scale={springs.scale}>
       <mesh
         castShadow
         receiveShadow
@@ -78,7 +83,7 @@ function FigmaModel(props: JSX.IntrinsicElements["group"]) {
         geometry={nodes.cyclinder2.geometry}
         material={lightRedMaterial}
       />
-    </group>
+    </animated.group>
   );
 }
 

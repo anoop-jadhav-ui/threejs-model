@@ -1,17 +1,17 @@
 import "./App.css";
 import React, { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
-import LoadingPage from "./components/LoadingPage/LoadingPage";
-import Sidebar from "./components/Sidebar/Sidebar";
+import LoadingPage from "./components/molecules/LoadingPage/LoadingPage";
+import Sidebar from "./components/molecules/Sidebar/Sidebar";
 import { useSidebar } from "./hooks/useSidebar";
 import { URL_PATH } from "./utils/path";
-import Logo from "./components/Models/Logo/Logo";
+import Logo from "./components/organisms/Logo/Logo";
 
-const Desk = React.lazy(() => import("./components/Models/Desk/Desk"));
-const Clock = React.lazy(() => import("./components/Models/Clock/Clock"));
-const Ring = React.lazy(() => import("./components/Models/Ring/Ring"));
+const Desk = React.lazy(() => import("./components/organisms/Desk/Desk"));
+const Clock = React.lazy(() => import("./components/organisms/Clock/Clock"));
+const Ring = React.lazy(() => import("./components/organisms/Ring/Ring"));
 const LandingPage = React.lazy(
-  () => import("./components/LandingPage/LandingPage")
+  () => import("./components/pages/LandingPage/LandingPage")
 );
 
 function App() {

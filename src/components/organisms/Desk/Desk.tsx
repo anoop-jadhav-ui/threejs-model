@@ -3,8 +3,8 @@ import { OrbitControls, PresentationControls, Stage } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { useControls } from "leva";
 import React, { Suspense } from "react";
-import LevaControls from "../../LevaControls/LevaControls";
-import { LoadingCube } from "../Loader3D/LoadingCube";
+import LevaControls from "../../atoms/LevaControls/LevaControls";
+import { LoadingCube } from "../../atoms/LoadingCube/LoadingCube";
 
 const Model = React.lazy(() => import("./Model/Model"));
 

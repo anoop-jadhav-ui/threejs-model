@@ -1,4 +1,4 @@
-import Spinner from "../Spinner/Spinner";
+import Spinner from "../../atoms/Spinner/Spinner";
 
 const LoadingPage = ({ label = "Loading..." }: { label?: string }) => {
   return (

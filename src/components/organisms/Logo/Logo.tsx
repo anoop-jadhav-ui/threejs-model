@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
-import LoadingPage from "../../LoadingPage/LoadingPage";
-import LevaControls from "../../LevaControls/LevaControls";
+import LoadingPage from "../../molecules/LoadingPage/LoadingPage";
+import LevaControls from "../../atoms/LevaControls/LevaControls";
 import { useControls } from "leva";
 
 const HtmlModel = React.lazy(() => import("./3DModels/HtmlModel"));

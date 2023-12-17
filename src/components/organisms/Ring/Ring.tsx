@@ -1,8 +1,8 @@
 import { PresentationControls, Stage } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { ReactNode, Suspense, lazy } from "react";
-import { LoadingCube } from "../Loader3D/LoadingCube";
-import LevaControls from "../../LevaControls/LevaControls";
+import { LoadingCube } from "../../atoms/LoadingCube/LoadingCube";
+import LevaControls from "../../atoms/LevaControls/LevaControls";
 
 const Model = lazy(() => import("./Model/Model"));
 

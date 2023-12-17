@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
-import { useSidebar } from "../../hooks/useSidebar";
-import { URL_PATH } from "../../utils/path";
+import { useSidebar } from "../../../hooks/useSidebar";
+import { URL_PATH } from "../../../utils/path";
 import { isMobile } from "react-device-detect";
 import { useEffect } from "react";
 interface SidebarItem {
