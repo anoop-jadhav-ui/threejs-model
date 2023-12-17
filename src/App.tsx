@@ -30,7 +30,7 @@ function App() {
           isSidebarOpen ? "md:w-10/12" : "w-full md:w-full"
         }`}
       >
-        <Suspense fallback={<LoadingPage />}>
+        <Suspense fallback={<LoadingPage label="Fetching Model..." />}>
           <Routes>
             <Route element={<LandingPage />} path={URL_PATH.root} />
             <Route element={<Desk />} path={URL_PATH.desk} />

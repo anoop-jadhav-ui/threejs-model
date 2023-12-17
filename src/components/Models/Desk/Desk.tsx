@@ -42,8 +42,8 @@ function Desk() {
           >
             <Suspense fallback={<LoadingCube />}>
               <Model />
-              <OrbitControls />
             </Suspense>
+            <OrbitControls />
           </PresentationControls>
         </Stage>
       </Canvas>

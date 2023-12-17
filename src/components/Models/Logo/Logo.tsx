@@ -17,7 +17,7 @@ const Skills3D = () => {
     },
   });
   return (
-    <Suspense fallback={<LoadingPage />}>
+    <Suspense fallback={<LoadingPage label="Fetching Model..." />}>
       <LevaControls collapsed={false} />
       <div className="flex bg-red-50 h-full flex-wrap">
         {logo === "HTML5" && <HtmlModel scale={1.5} />}
