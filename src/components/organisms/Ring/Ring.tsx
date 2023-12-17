@@ -34,18 +34,18 @@ const RingCanvasWrapper = ({ children }: { children: ReactNode }) => {
 function Ring() {
   return (
     <RingCanvasWrapper>
-      <Suspense fallback={<LoadingCube />}>
-        <Stage environment="park" shadows={true} adjustCamera={false}>
-          <PresentationControls
-            global
-            zoom={1}
-            rotation={[0, -Math.PI / 2, -Math.PI / 5]}
-            snap
-          >
+      <Stage environment="park" shadows={true} adjustCamera={false}>
+        <PresentationControls
+          global
+          zoom={1}
+          rotation={[0, -Math.PI / 2, -Math.PI / 5]}
+          snap
+        >
+          <Suspense fallback={<LoadingCube />}>
             <Model />
-          </PresentationControls>
-        </Stage>
-      </Suspense>
+          </Suspense>
+        </PresentationControls>
+      </Stage>
     </RingCanvasWrapper>
   );
 }
