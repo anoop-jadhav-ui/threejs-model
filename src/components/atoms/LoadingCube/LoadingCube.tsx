@@ -18,7 +18,9 @@ type GLTFResult = GLTF & {
 export function LoadingCube(props: JSX.IntrinsicElements["group"]) {
   const [, startTransition] = useTransition();
   const { progress } = useProgress();
-  const { nodes } = useGLTF("/loadingCube-transformed.glb") as GLTFResult;
+  const { nodes } = useGLTF(
+    "/loadingCube-transformed.glb"
+  ) as unknown as GLTFResult;
 
   const cubeRef = useRef<THREE.Mesh>(null);
 

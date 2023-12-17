@@ -152,7 +152,9 @@ const BgReflector = () => {
 
 function Model() {
   const [, startTransition] = useTransition();
-  const { nodes } = useGLTF("./ringProblem-transformed.glb") as GLTFResult;
+  const { nodes } = useGLTF(
+    "./ringProblem-transformed.glb"
+  ) as unknown as GLTFResult;
 
   const { groupRef, springs } = useBounceInAnimation({
     scaleTo: 1,
