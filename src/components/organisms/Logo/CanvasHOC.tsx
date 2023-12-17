@@ -65,6 +65,7 @@ const CanvasHOC =
         style={{
           aspectRatio: 1,
         }}
+        className="bg-red-50"
       >
         <CanvasChild
           config={config ?? {}}

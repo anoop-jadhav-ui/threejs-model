@@ -16,7 +16,7 @@ Globals.assign({
 
 function Clock() {
   const canvasColor = useControls("Canvas Color", {
-    color: "#fce3f3",
+    color: "#fef2f2",
   });
 
   const { hours, minutes, seconds, isLoading } = useCurrentTime();
@@ -35,6 +35,7 @@ function Clock() {
           dpr={window?.devicePixelRatio}
           camera={{ fov: 25, position: [0, 0, 24] }}
           flat
+          className="bg-red-50"
         >
           <color attach="background" args={[canvasColor.color]} />
           <Stage environment="park" shadows={false} adjustCamera={false}>

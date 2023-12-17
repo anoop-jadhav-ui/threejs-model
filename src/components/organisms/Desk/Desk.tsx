@@ -14,7 +14,7 @@ Globals.assign({
 
 function Desk() {
   const canvasColor = useControls("Canvas Color", {
-    color: "#fce3f3",
+    color: "#fef2f2",
   });
 
   return (
@@ -29,6 +29,7 @@ function Desk() {
         dpr={window?.devicePixelRatio}
         camera={{ fov: 25, position: [0, 0, 24] }}
         flat
+        className="bg-red-50"
       >
         <color attach="background" args={[canvasColor.color]} />
         <Stage environment="park" shadows={false} adjustCamera={false}>

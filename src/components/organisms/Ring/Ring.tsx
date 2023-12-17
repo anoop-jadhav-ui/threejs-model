@@ -23,6 +23,7 @@ const RingCanvasWrapper = ({ children }: { children: ReactNode }) => {
         onCreated={(state) => {
           state.gl.setClearColor("#fff1f4");
         }}
+        className="bg-red-50"
       >
         {children}
       </Canvas>
