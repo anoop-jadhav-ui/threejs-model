@@ -28,8 +28,8 @@ function Workstation() {
         frameloop="always"
         dpr={window?.devicePixelRatio}
         camera={{ fov: 25, position: [0, 0, 24] }}
-        flat
         className="bg-red-50"
+        flat
       >
         <color attach="background" args={[canvasColor.color]} />
         <Stage environment="park" shadows={false} adjustCamera={false}>

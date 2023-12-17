@@ -5,7 +5,7 @@ Command: npx gltfjsx@6.1.4 --types ./public/ringProblem.glb --transform -s
 import { animated } from "@react-spring/three";
 import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { useTransition } from "react";
+import { useMemo, useTransition } from "react";
 import * as THREE from "three";
 import { GLTF } from "three-stdlib";
 import useBounceInAnimation from "../../../../hooks/useBounceInAnimation";
@@ -63,32 +63,44 @@ interface HeadType {
 const Head = ({ nodes }: HeadType) => {
   const { headColor, diamond } = useRingConfig();
 
-  const diamondMaterial1 = new THREE.MeshPhysicalMaterial({
-    roughness: 0,
-    transmission: 1,
-    reflectivity: 1,
-    clearcoat: 1,
-    ior: 2.418,
-    color: "hotpink",
-  });
+  const diamondMaterial1 = useMemo(
+    () =>
+      new THREE.MeshPhysicalMaterial({
+        roughness: 0,
+        transmission: 1,
+        reflectivity: 1,
+        clearcoat: 1,
+        ior: 2.418,
+        color: "hotpink",
+      }),
+    []
+  );
 
-  const diamondMaterial2 = new THREE.MeshPhysicalMaterial({
-    roughness: 0,
-    transmission: 1,
-    reflectivity: 1,
-    clearcoat: 1,
-    ior: 2.418,
-    color: "aquamarine",
-  });
+  const diamondMaterial2 = useMemo(
+    () =>
+      new THREE.MeshPhysicalMaterial({
+        roughness: 0,
+        transmission: 1,
+        reflectivity: 1,
+        clearcoat: 1,
+        ior: 2.418,
+        color: "aquamarine",
+      }),
+    []
+  );
 
-  const diamondMaterial3 = new THREE.MeshPhysicalMaterial({
-    roughness: 0,
-    transmission: 1,
-    reflectivity: 1,
-    clearcoat: 1,
-    ior: 2.418,
-    color: "yellowgreen",
-  });
+  const diamondMaterial3 = useMemo(
+    () =>
+      new THREE.MeshPhysicalMaterial({
+        roughness: 0,
+        transmission: 1,
+        reflectivity: 1,
+        clearcoat: 1,
+        ior: 2.418,
+        color: "yellowgreen",
+      }),
+    []
+  );
 
   return (
     <>
@@ -133,9 +145,13 @@ const Head = ({ nodes }: HeadType) => {
 };
 
 const BgReflector = () => {
-  const material = new THREE.MeshStandardMaterial({
-    color: "#fecaca",
-  });
+  const material = useMemo(
+    () =>
+      new THREE.MeshStandardMaterial({
+        color: "#fecaca",
+      }),
+    []
+  );
   return (
     <mesh
       position={[0, -1.2, 0]}

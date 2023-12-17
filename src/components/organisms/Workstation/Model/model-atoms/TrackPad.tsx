@@ -1,23 +1,38 @@
+import { useGLTF } from "@react-three/drei";
 import { useControls } from "leva";
+import { useMemo } from "react";
 import { MeshPhysicalMaterial } from "three";
-import { SubModelProps } from "../Model";
 import { color } from "../materials";
+import { WorkStationGLTFType } from "../Model";
 
-const TrackPad = ({ nodes }: SubModelProps) => {
+const TrackPad = () => {
+  const { nodes } = useGLTF(
+    "/portfolio-transformed.glb"
+  ) as unknown as WorkStationGLTFType;
+
   const { white, grey } = useControls("Trackpad", {
     white: color.WHITE,
     grey: color.LIGHT_GREY,
   });
 
-  const whiteMaterial = new MeshPhysicalMaterial({
-    color: white,
-    roughness: 1,
-    clearcoat: 1,
-  });
-  const greyMaterial = new MeshPhysicalMaterial({
-    color: grey,
-    clearcoat: 1,
-  });
+  const whiteMaterial = useMemo(
+    () =>
+      new MeshPhysicalMaterial({
+        color: white,
+        roughness: 1,
+        clearcoat: 1,
+      }),
+    []
+  );
+
+  const greyMaterial = useMemo(
+    () =>
+      new MeshPhysicalMaterial({
+        color: grey,
+        clearcoat: 1,
+      }),
+    []
+  );
 
   return (
     <mesh

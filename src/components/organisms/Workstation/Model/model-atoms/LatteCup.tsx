@@ -1,18 +1,28 @@
+import { useGLTF } from "@react-three/drei";
 import { useControls } from "leva";
+import { useMemo } from "react";
 import { MeshPhysicalMaterial } from "three";
-import { SubModelProps } from "../Model";
+import { WorkStationGLTFType } from "../Model";
 import { color } from "../materials";
 
-const LatteCup = ({ nodes, materials }: SubModelProps) => {
+const LatteCup = () => {
+  const { nodes, materials } = useGLTF(
+    "/portfolio-transformed.glb"
+  ) as unknown as WorkStationGLTFType;
+
   const { lid } = useControls("LatteCup", {
     lid: color.LATTE_LID_RED,
   });
 
-  const lidMaterial = new MeshPhysicalMaterial({
-    color: lid,
-    clearcoat: 1,
-    roughness: 1,
-  });
+  const lidMaterial = useMemo(
+    () =>
+      new MeshPhysicalMaterial({
+        color: lid,
+        clearcoat: 1,
+        roughness: 1,
+      }),
+    []
+  );
 
   return (
     <>

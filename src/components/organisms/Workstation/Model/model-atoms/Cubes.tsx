@@ -1,55 +1,59 @@
+import { Merged, useGLTF } from "@react-three/drei";
 import { useControls } from "leva";
+import { useMemo } from "react";
 import { MeshPhysicalMaterial } from "three";
-import { SubModelProps } from "../Model";
-import { color } from "../materials";
 import { CubeFloat } from "../AnimationUtils";
+import { WorkStationGLTFType } from "../Model";
+import { color } from "../materials";
 
-const Cubes = ({ nodes }: SubModelProps) => {
+const Cubes = () => {
+  const { nodes } = useGLTF(
+    "/portfolio-transformed.glb"
+  ) as unknown as WorkStationGLTFType;
+
   const { cubeColor } = useControls("Cubes", {
     cubeColor: color.CUBE_COLOR,
   });
 
-  const material = new MeshPhysicalMaterial({
-    color: cubeColor,
-    roughness: 1,
-    clearcoat: 1,
-  });
+  const material = useMemo(
+    () =>
+      new MeshPhysicalMaterial({
+        color: cubeColor,
+        roughness: 1,
+        clearcoat: 1,
+      }),
+    []
+  );
+
+  const cubeMesh = useMemo(
+    () => ({
+      Cube: {
+        ...nodes.randomCube0,
+        material: material,
+      },
+    }),
+    []
+  );
 
   return (
-    <>
-      <CubeFloat>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.randomCube0.geometry}
-          material={material}
-        />
-      </CubeFloat>
-      <CubeFloat>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.randomCube3.geometry}
-          material={material}
-        />
-      </CubeFloat>
-      <CubeFloat>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.randomCube4.geometry}
-          material={material}
-        />
-      </CubeFloat>
-      <CubeFloat>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.randomCube5.geometry}
-          material={material}
-        />
-      </CubeFloat>
-    </>
+    <Merged meshes={cubeMesh}>
+      {(Models: any) => (
+        <>
+          <CubeFloat>
+            <Models.Cube castShadow receiveShadow position={[3, -1, 0]} />
+          </CubeFloat>
+          <CubeFloat>
+            <Models.Cube castShadow receiveShadow position={[5, -3, 3]} />
+          </CubeFloat>
+          <CubeFloat>
+            <Models.Cube castShadow receiveShadow position={[-3, 0, 0]} />
+          </CubeFloat>
+          <CubeFloat>
+            <Models.Cube castShadow receiveShadow position={[-3, -2, 0]} />
+          </CubeFloat>
+        </>
+      )}
+    </Merged>
   );
 };
 

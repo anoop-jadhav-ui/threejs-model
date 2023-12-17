@@ -27,7 +27,7 @@ export interface SubModelProps {
   };
 }
 
-type GLTFResult = GLTF & {
+export type WorkStationGLTFType = GLTF & {
   nodes: {
     background: THREE.Mesh;
     background2: THREE.Mesh;
@@ -94,10 +94,6 @@ type GLTFResult = GLTF & {
 };
 
 const Model = (props: JSX.IntrinsicElements["group"]) => {
-  const { nodes, materials } = useGLTF(
-    "/portfolio-transformed.glb"
-  ) as GLTFResult;
-
   const { groupRef, springs } = useBounceInAnimation({
     scaleTo: 1,
   });
@@ -109,17 +105,17 @@ const Model = (props: JSX.IntrinsicElements["group"]) => {
       ref={groupRef}
       scale={springs.scale}
     >
-      <TrackPad nodes={nodes} materials={materials} />
-      <TextBlock nodes={nodes} materials={materials} />
-      <Bulb nodes={nodes} materials={materials} />
-      <Cubes nodes={nodes} materials={materials} />
-      <Monitor nodes={nodes} materials={materials} />
-      <Dropper nodes={nodes} materials={materials} />
-      <Pen nodes={nodes} materials={materials} />
-      <LatteCup nodes={nodes} materials={materials} />
-      <NoteBook nodes={nodes} materials={materials} />
-      <ColorCards nodes={nodes} materials={materials} />
-      <Background nodes={nodes} materials={materials} />
+      <TrackPad />
+      <TextBlock />
+      <Bulb />
+      <Cubes />
+      <Monitor />
+      <Dropper />
+      <Pen />
+      <LatteCup />
+      <NoteBook />
+      <ColorCards />
+      <Background />
     </animated.group>
   );
 };

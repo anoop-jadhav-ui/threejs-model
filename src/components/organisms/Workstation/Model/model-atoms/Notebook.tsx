@@ -1,9 +1,15 @@
+import { useGLTF } from "@react-three/drei";
 import { useControls } from "leva";
+import { useMemo } from "react";
 import { MeshPhysicalMaterial } from "three";
-import { SubModelProps } from "../Model";
+import { WorkStationGLTFType } from "../Model";
 import { color } from "../materials";
 
-const NoteBook = ({ nodes }: SubModelProps) => {
+const NoteBook = () => {
+  const { nodes } = useGLTF(
+    "/portfolio-transformed.glb"
+  ) as unknown as WorkStationGLTFType;
+
   const { rubber, cover, bookmark1, pages, bookmark2 } = useControls(
     "Notebook",
     {
@@ -14,31 +20,52 @@ const NoteBook = ({ nodes }: SubModelProps) => {
       cover: color.NOTEBOOK_COVER,
     }
   );
-  const bookmark1Material = new MeshPhysicalMaterial({
-    color: bookmark1,
-    clearcoat: 1,
-    roughness: 1,
-  });
-  const rubberMaterial = new MeshPhysicalMaterial({
-    color: rubber,
-    clearcoat: 1,
-    roughness: 1,
-  });
-  const coverMaterial = new MeshPhysicalMaterial({
-    color: cover,
-    clearcoat: 1,
-    roughness: 1,
-  });
-  const pagesMaterial = new MeshPhysicalMaterial({
-    color: pages,
-    clearcoat: 1,
-    roughness: 1,
-  });
-  const bookmark2Material = new MeshPhysicalMaterial({
-    color: bookmark2,
-    clearcoat: 1,
-    roughness: 1,
-  });
+  const bookmark1Material = useMemo(
+    () =>
+      new MeshPhysicalMaterial({
+        color: bookmark1,
+        clearcoat: 1,
+        roughness: 1,
+      }),
+    []
+  );
+  const rubberMaterial = useMemo(
+    () =>
+      new MeshPhysicalMaterial({
+        color: rubber,
+        clearcoat: 1,
+        roughness: 1,
+      }),
+    []
+  );
+  const coverMaterial = useMemo(
+    () =>
+      new MeshPhysicalMaterial({
+        color: cover,
+        clearcoat: 1,
+        roughness: 1,
+      }),
+    []
+  );
+  const pagesMaterial = useMemo(
+    () =>
+      new MeshPhysicalMaterial({
+        color: pages,
+        clearcoat: 1,
+        roughness: 1,
+      }),
+    []
+  );
+  const bookmark2Material = useMemo(
+    () =>
+      new MeshPhysicalMaterial({
+        color: bookmark2,
+        clearcoat: 1,
+        roughness: 1,
+      }),
+    []
+  );
+
   return (
     <mesh
       castShadow

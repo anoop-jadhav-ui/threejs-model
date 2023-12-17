@@ -1,26 +1,39 @@
-import { Float } from "@react-three/drei";
+import { Float, useGLTF } from "@react-three/drei";
 import { useControls } from "leva";
 import { useMemo } from "react";
 import { MeshPhysicalMaterial } from "three";
-import { SubModelProps } from "../Model";
+import { WorkStationGLTFType } from "../Model";
 import { color } from "../materials";
 
-const Pen = ({ nodes, materials }: SubModelProps) => {
+const Pen = () => {
+  const { nodes, materials } = useGLTF(
+    "/portfolio-transformed.glb"
+  ) as unknown as WorkStationGLTFType;
+
   const { accentColor, penColor } = useControls("Pen", {
     accentColor: color.PEN_RED,
     penColor: color.BLACK,
   });
 
-  const accentMaterial = new MeshPhysicalMaterial({
-    color: accentColor,
-    clearcoat: 1,
-    roughness: 1,
-  });
-  const penMaterial = new MeshPhysicalMaterial({
-    color: penColor,
-    clearcoat: 1,
-    roughness: 1,
-  });
+  const accentMaterial = useMemo(
+    () =>
+      new MeshPhysicalMaterial({
+        color: accentColor,
+        clearcoat: 1,
+        roughness: 1,
+      }),
+    []
+  );
+
+  const penMaterial = useMemo(
+    () =>
+      new MeshPhysicalMaterial({
+        color: penColor,
+        clearcoat: 1,
+        roughness: 1,
+      }),
+    []
+  );
 
   const floatSpeed = useMemo(() => {
     return Math.random() + 1;

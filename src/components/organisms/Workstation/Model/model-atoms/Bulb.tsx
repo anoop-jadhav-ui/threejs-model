@@ -1,23 +1,31 @@
 import { animated, useSpring } from "@react-spring/three";
-import { Float } from "@react-three/drei";
+import { Float, useGLTF } from "@react-three/drei";
 import { useControls } from "leva";
 import { useEffect, useMemo } from "react";
 import { MeshPhysicalMaterial } from "three";
-import { SubModelProps } from "../Model";
+import { WorkStationGLTFType } from "../Model";
 
-const Bulb = ({ nodes }: SubModelProps) => {
+const Bulb = () => {
+  const { nodes } = useGLTF(
+    "/portfolio-transformed.glb"
+  ) as unknown as WorkStationGLTFType;
+
   const [spring, api] = useSpring(() => ({ emissiveIntensity: 1 }), []);
   const { bulbColor, holderColor } = useControls("Bulb", {
     bulbColor: "#ff8e4d",
     holderColor: "#5f5f5f",
   });
 
-  const holderMaterial = new MeshPhysicalMaterial({
-    color: holderColor,
-    roughness: 1,
-    emissive: 1,
-    clearcoat: 1,
-  });
+  const holderMaterial = useMemo(
+    () =>
+      new MeshPhysicalMaterial({
+        color: holderColor,
+        roughness: 1,
+        emissive: 1,
+        clearcoat: 1,
+      }),
+    []
+  );
 
   const floatSpeed = useMemo(() => {
     return Math.random() + 1;
@@ -45,8 +53,6 @@ const Bulb = ({ nodes }: SubModelProps) => {
       speed={floatSpeed}
     >
       <animated.mesh castShadow receiveShadow geometry={nodes.bulb_1.geometry}>
-        {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-        {/* @ts-ignore */}
         <animated.meshPhysicalMaterial
           color={bulbColor}
           roughness={1}

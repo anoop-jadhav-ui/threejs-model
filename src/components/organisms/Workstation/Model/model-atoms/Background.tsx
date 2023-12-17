@@ -1,18 +1,28 @@
 import { useControls } from "leva";
+import { useMemo } from "react";
 import { MeshPhysicalMaterial } from "three";
-import { SubModelProps } from "../Model";
 import { color } from "../materials";
+import { WorkStationGLTFType } from "../Model";
+import { useGLTF } from "@react-three/drei";
 
-const Background = ({ nodes }: SubModelProps) => {
+const Background = () => {
+  const { nodes } = useGLTF(
+    "/portfolio-transformed.glb"
+  ) as unknown as WorkStationGLTFType;
+
   const { bgColor } = useControls("background", {
     bgColor: color.BACKGROUND,
   });
 
-  const bgMaterial = new MeshPhysicalMaterial({
-    color: bgColor,
-    clearcoat: 1,
-    roughness: 1,
-  });
+  const bgMaterial = useMemo(
+    () =>
+      new MeshPhysicalMaterial({
+        color: bgColor,
+        clearcoat: 1,
+        roughness: 1,
+      }),
+    []
+  );
 
   return (
     <mesh

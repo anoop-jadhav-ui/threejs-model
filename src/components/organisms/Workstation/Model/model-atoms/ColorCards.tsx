@@ -1,6 +1,11 @@
-import { SubModelProps } from "../Model";
+import { useGLTF } from "@react-three/drei";
+import { WorkStationGLTFType } from "../Model";
 
-const ColorCards = ({ nodes, materials }: SubModelProps) => {
+const ColorCards = () => {
+  const { nodes, materials } = useGLTF(
+    "/portfolio-transformed.glb"
+  ) as unknown as WorkStationGLTFType;
+
   return (
     <mesh
       castShadow

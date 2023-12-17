@@ -1,9 +1,15 @@
 import { useControls } from "leva";
+import { useMemo } from "react";
 import { MeshPhysicalMaterial } from "three";
-import { SubModelProps } from "../Model";
 import { color } from "../materials";
+import { WorkStationGLTFType } from "../Model";
+import { useGLTF } from "@react-three/drei";
 
-const Monitor = ({ nodes, materials }: SubModelProps) => {
+const Monitor = () => {
+  const { nodes, materials } = useGLTF(
+    "/portfolio-transformed.glb"
+  ) as unknown as WorkStationGLTFType;
+
   const { dark, screen, grey, light1, light2 } = useControls("Monitor", {
     dark: color.BLACK,
     screen: color.BLUE,
@@ -12,38 +18,59 @@ const Monitor = ({ nodes, materials }: SubModelProps) => {
     light2: color.PURPLE,
   });
 
-  const darkMaterial = new MeshPhysicalMaterial({
-    color: dark,
-    roughness: 1,
-    clearcoat: 1,
-  });
-  const greyMaterial = new MeshPhysicalMaterial({
-    color: grey,
-    flatShading: true,
-    clearcoat: 1,
-    roughness: 1,
-  });
-  const screenMaterial = new MeshPhysicalMaterial({
-    color: screen,
-    roughness: 1,
-    emissive: screen,
-    emissiveIntensity: 2,
-    clearcoat: 1,
-  });
-  const light1Material = new MeshPhysicalMaterial({
-    color: light1,
-    roughness: 1,
-    emissive: light1,
-    emissiveIntensity: 2,
-    clearcoat: 1,
-  });
-  const light2Material = new MeshPhysicalMaterial({
-    color: light2,
-    roughness: 1,
-    emissive: light2,
-    emissiveIntensity: 2,
-    clearcoat: 1,
-  });
+  const darkMaterial = useMemo(
+    () =>
+      new MeshPhysicalMaterial({
+        color: dark,
+        roughness: 1,
+        clearcoat: 1,
+      }),
+    []
+  );
+
+  const greyMaterial = useMemo(
+    () =>
+      new MeshPhysicalMaterial({
+        color: grey,
+        flatShading: true,
+        clearcoat: 1,
+        roughness: 1,
+      }),
+    []
+  );
+  const screenMaterial = useMemo(
+    () =>
+      new MeshPhysicalMaterial({
+        color: screen,
+        roughness: 1,
+        emissive: screen,
+        emissiveIntensity: 2,
+        clearcoat: 1,
+      }),
+    []
+  );
+  const light1Material = useMemo(
+    () =>
+      new MeshPhysicalMaterial({
+        color: light1,
+        roughness: 1,
+        emissive: light1,
+        emissiveIntensity: 2,
+        clearcoat: 1,
+      }),
+    []
+  );
+  const light2Material = useMemo(
+    () =>
+      new MeshPhysicalMaterial({
+        color: light2,
+        roughness: 1,
+        emissive: light2,
+        emissiveIntensity: 2,
+        clearcoat: 1,
+      }),
+    []
+  );
 
   return (
     <>
