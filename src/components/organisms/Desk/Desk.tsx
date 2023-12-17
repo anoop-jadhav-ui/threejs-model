@@ -36,11 +36,10 @@ function Desk() {
           <PresentationControls
             snap
             global
-            cursor
             zoom={1}
             rotation={[0, -Math.PI / 6, 0]}
             polar={[0, Math.PI / 6]}
-            azimuth={[-Math.PI / 6, Math.PI / 6]}
+            azimuth={[-Infinity, Infinity]}
           >
             <Suspense fallback={<LoadingCube />}>
               <Model position={[0, -1.5, 0]} />

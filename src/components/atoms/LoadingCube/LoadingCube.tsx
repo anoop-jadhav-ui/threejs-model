@@ -61,10 +61,10 @@ export function LoadingCube(props: JSX.IntrinsicElements["group"]) {
         <p
           className="text-slate-800"
           style={{
-            fontSize: 24,
+            fontSize: 18,
             fontWeight: "bold",
             position: "absolute",
-            left: "-1.25rem",
+            left: "-1rem",
             top: "4.5rem",
           }}
         >
