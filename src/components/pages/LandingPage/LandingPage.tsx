@@ -9,9 +9,10 @@ const LandingPage = () => {
       </h1>
 
       <p className="text-lg mb-6">
-        Discover the beauty of simplicity through my animated 3D models. This is
-        where my creative journey unfolds, showcasing a blend of art and
-        innovation.
+        This web app is more than just a showcase of fancy 3D models, it's a
+        platform to explore and learn various aspects, including animation, web
+        optimization, and more. Immerse yourself in the beauty of simplicity
+        through my animated 3D models.
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -50,14 +51,14 @@ const LandingPage = () => {
 
       <ul className="list-disc pl-6 mb-6">
         <li className="mb-2">
-          🌟 <strong className="text-red-400">Visual Delight:</strong> Dive into
-          a world where simplicity meets creativity for a visually captivating
-          experience. 🌈
+          🌟 <strong className="text-red-400">Visual Delight:</strong> Immerse
+          yourself in a world where simplicity meets creativity for a visually
+          captivating experience. 🌈
         </li>
         <li className="mb-2">
-          🚀 <strong className="text-red-400">Explore & Connect:</strong> Browse
-          through, connect with my work, and perhaps find inspiration for your
-          next project. 🔗
+          🚀 <strong className="text-red-400">Explore & Connect:</strong> Delve
+          into my work, discover inspiration, and connect with a community of
+          enthusiasts. 🔗
         </li>
       </ul>
 
