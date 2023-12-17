@@ -10,11 +10,11 @@ interface SidebarItem {
 
 const sidebarItems: SidebarItem[] = [
   {
-    path: URL_PATH.desk,
+    path: URL_PATH.workstation,
     element: (
       <>
         <span>🖥️</span>
-        <span className="pl-4">Fancy Workstation</span>
+        <span className="pl-4">Workstation</span>
       </>
     ),
   },

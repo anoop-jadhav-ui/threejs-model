@@ -8,7 +8,7 @@ import { useFrame } from "@react-three/fiber";
 import { useRef, useTransition } from "react";
 import * as THREE from "three";
 import { GLTF } from "three-stdlib";
-import { color } from "../../organisms/Desk/Model/materials";
+import { color } from "../../organisms/Workstation/Model/materials";
 
 type GLTFResult = GLTF & {
   nodes: {

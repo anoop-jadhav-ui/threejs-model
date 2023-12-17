@@ -12,7 +12,7 @@ Globals.assign({
   frameLoop: "always",
 });
 
-function Desk() {
+function Workstation() {
   const canvasColor = useControls("Canvas Color", {
     color: "#fef2f2",
   });
@@ -52,4 +52,4 @@ function Desk() {
   );
 }
 
-export default Desk;
+export default Workstation;

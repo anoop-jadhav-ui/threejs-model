@@ -1,6 +1,6 @@
 export const URL_PATH = {
   root: "/",
-  desk: "/desk",
+  workstation: "/workstation",
   ring: "/ring",
   wallClock: "/wallClock",
   logo: "/logo",

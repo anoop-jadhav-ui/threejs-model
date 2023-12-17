@@ -7,7 +7,9 @@ import { useSidebar } from "./hooks/useSidebar";
 import { URL_PATH } from "./utils/path";
 import Logo from "./components/organisms/Logo/Logo";
 
-const Desk = React.lazy(() => import("./components/organisms/Desk/Desk"));
+const Desk = React.lazy(
+  () => import("./components/organisms/Workstation/Workstation")
+);
 const Clock = React.lazy(() => import("./components/organisms/Clock/Clock"));
 const Ring = React.lazy(() => import("./components/organisms/Ring/Ring"));
 const LandingPage = React.lazy(
@@ -33,7 +35,7 @@ function App() {
         <Suspense fallback={<LoadingPage label="Fetching Model..." />}>
           <Routes>
             <Route element={<LandingPage />} path={URL_PATH.root} />
-            <Route element={<Desk />} path={URL_PATH.desk} />
+            <Route element={<Desk />} path={URL_PATH.workstation} />
             <Route element={<Clock />} path={URL_PATH.wallClock} />
             <Route element={<Ring />} path={URL_PATH.ring} />
             <Route element={<Logo />} path={URL_PATH.logo} />
