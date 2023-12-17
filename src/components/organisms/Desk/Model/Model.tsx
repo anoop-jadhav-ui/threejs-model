@@ -1,6 +1,5 @@
 import { animated } from "@react-spring/three";
 import { useGLTF } from "@react-three/drei";
-import { useControls } from "leva";
 import { Material } from "three";
 import { GLTF } from "three-stdlib";
 import useBounceInAnimation from "../../../../hooks/useBounceInAnimation";
