@@ -93,7 +93,7 @@ type GLTFResult = GLTF & {
   };
 };
 
-const Model = () => {
+const Model = (props: JSX.IntrinsicElements["group"]) => {
   const { nodes, materials } = useGLTF(
     "/portfolio-transformed.glb"
   ) as GLTFResult;
@@ -103,7 +103,12 @@ const Model = () => {
   });
 
   return (
-    <animated.group dispose={null} ref={groupRef} scale={springs.scale}>
+    <animated.group
+      {...props}
+      dispose={null}
+      ref={groupRef}
+      scale={springs.scale}
+    >
       <TrackPad nodes={nodes} materials={materials} />
       <TextBlock nodes={nodes} materials={materials} />
       <Bulb nodes={nodes} materials={materials} />

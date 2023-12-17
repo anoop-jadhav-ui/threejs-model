@@ -36,17 +36,19 @@ function Desk() {
           <PresentationControls
             snap
             global
+            cursor
             zoom={1}
             rotation={[0, -Math.PI / 6, 0]}
             polar={[0, Math.PI / 6]}
             azimuth={[-Math.PI / 6, Math.PI / 6]}
           >
             <Suspense fallback={<LoadingCube />}>
-              <Model />
+              <Model position={[0, -1, 0]} />
             </Suspense>
-            <OrbitControls />
           </PresentationControls>
         </Stage>
+        {/* <axesHelper args={[10]} /> */}
+        <OrbitControls />
       </Canvas>
     </>
   );
