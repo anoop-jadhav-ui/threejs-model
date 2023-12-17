@@ -3,7 +3,7 @@ import { URL_PATH } from "../../../utils/path";
 
 const LandingPage = () => {
   return (
-    <div className="p-8 md:px-16 text-gray-800 bg-gray-100 h-full">
+    <div className="h-full p-8 md:px-16 text-gray-800 bg-red-50">
       <h1 className="text-4xl font-bold mb-4 text-red-400">
         Welcome to 3D Models 🎨
       </h1>

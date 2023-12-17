@@ -3,19 +3,19 @@ import { useGLTF } from "@react-three/drei";
 import { useControls } from "leva";
 import { Material } from "three";
 import { GLTF } from "three-stdlib";
-
 import useBounceInAnimation from "../../../../hooks/useBounceInAnimation";
-import Background from "./atoms/Background";
-import Bulb from "./atoms/Bulb";
-import ColorCards from "./atoms/ColorCards";
-import Cubes from "./atoms/Cubes";
-import Dropper from "./atoms/Dropper";
-import LatteCup from "./atoms/LatteCup";
-import Monitor from "./atoms/Monitor";
-import NoteBook from "./atoms/Notebook";
-import Pen from "./atoms/Pen";
-import TextBlock from "./atoms/TextBlock";
-import TrackPad from "./atoms/TrackPad";
+
+import Background from "./model-atoms/Background";
+import Bulb from "./model-atoms/Bulb";
+import ColorCards from "./model-atoms/ColorCards";
+import Cubes from "./model-atoms/Cubes";
+import Dropper from "./model-atoms/Dropper";
+import LatteCup from "./model-atoms/LatteCup";
+import Monitor from "./model-atoms/Monitor";
+import NoteBook from "./model-atoms/Notebook";
+import Pen from "./model-atoms/Pen";
+import TextBlock from "./model-atoms/TextBlock";
+import TrackPad from "./model-atoms/TrackPad";
 
 export interface SubModelProps {
   materials: {
@@ -103,19 +103,8 @@ const Model = () => {
     scaleTo: 1,
   });
 
-  const { modelPosition, modelRotation } = useControls("modelSettings", {
-    modelPosition: [0, -1.5, 0],
-    modelRotation: [0, 0, 0],
-  });
-
   return (
-    <animated.group
-      dispose={null}
-      position={modelPosition}
-      rotation={modelRotation}
-      ref={groupRef}
-      scale={springs.scale}
-    >
+    <animated.group dispose={null} ref={groupRef} scale={springs.scale}>
       <TrackPad nodes={nodes} materials={materials} />
       <TextBlock nodes={nodes} materials={materials} />
       <Bulb nodes={nodes} materials={materials} />
