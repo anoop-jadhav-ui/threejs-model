@@ -43,11 +43,10 @@ function Desk() {
             azimuth={[-Math.PI / 6, Math.PI / 6]}
           >
             <Suspense fallback={<LoadingCube />}>
-              <Model position={[0, -1, 0]} />
+              <Model position={[0, -1.5, 0]} />
             </Suspense>
           </PresentationControls>
         </Stage>
-        {/* <axesHelper args={[10]} /> */}
         <OrbitControls />
       </Canvas>
     </>
